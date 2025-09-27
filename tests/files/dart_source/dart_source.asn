@@ -1,0 +1,9 @@
+PersonModule DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+Person ::= SEQUENCE {
+    name  UTF8String,
+    age   INTEGER,
+    city  UTF8String OPTIONAL
+}
+
+END

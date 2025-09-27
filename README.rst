@@ -332,6 +332,22 @@ Other OER and/or UPER C code generators:
 See the `benchmark example`_ for a comparison of `asn1c`, `asn1scc`
 and `asn1tools`.
 
+
+The generate Dart source subcommand
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Generate OER or UPER or JER Dart source code from an ASN.1 specification.
+
+Below is an example generating OER Dart source code from
+`tests/files/dart_source/dart_source.asn`_.
+
+.. code-block:: text
+
+   > asn1tools generate_dart_source --codec oer tests/files/dart_source/dart_source.asn
+   Successfully generated oer.dart.
+
+The same as above, but generate UPER Dart source code instead of OER.
+
 Contributing
 ============
 
@@ -342,6 +358,8 @@ Contributing
    .. code-block:: text
 
       pip install -r requirements.txt
+      or 
+      pip install -e .  # for link editable package
 
 #. Implement the new feature or bug fix.
 

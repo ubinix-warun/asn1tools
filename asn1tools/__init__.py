@@ -10,6 +10,8 @@ import binascii
 import logging
 from pprint import pformat
 
+from asn1tools.source import dart
+
 
 try:
     from prompt_toolkit.completion import WordCompleter
@@ -318,6 +320,30 @@ def _do_generate_c_source(args):
         print('recent version of clang.')
 
 
+def _do_generate_dart_source(args):
+
+    name = os.path.basename(args.specification[0])
+    name = os.path.splitext(name)[0]
+    filename_dart = name + '.dart'
+
+    print ('Compiling...')
+    compiled = compile_files(args.specification,
+                             args.codec)
+    print ('Generating Dart source code...')
+    source = dart.generate(compiled, args.codec)
+
+    source = """
+void main() {
+  print('Hello, World!');
+}
+"""
+
+    filename_dart = name + '.dart'
+    with open(filename_dart, 'w') as fout:
+        fout.write(source)
+
+    print('Successfully generated {}.'.format(filename_dart))
+
 def _do_generate_rust_source(args):
     name = os.path.basename(args.specification[0])
     name = os.path.splitext(name)[0]
@@ -416,6 +442,21 @@ def _main():
                            nargs='+',
                            help='ASN.1 specification as one or more .asn files.')
     subparser.set_defaults(func=_do_generate_c_source)
+
+
+    # The 'generate_dart_source' subparser.
+    subparser = subparsers.add_parser(
+        'generate_dart_source',
+        description='Generate Dart source code from given ASN.1 specification.')
+    subparser.add_argument(
+        '-c', '--codec',
+        choices=('jer',),
+        default='je',
+        help='Codec to generate code for (default: %(default)s).')
+    subparser.add_argument('specification',
+                           nargs='+',
+                           help='ASN.1 specification as one or more .asn files.')
+    subparser.set_defaults(func=_do_generate_dart_source)
 
     # The 'generate_rust_source' subparser.
     subparser = subparsers.add_parser(
