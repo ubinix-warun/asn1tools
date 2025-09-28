@@ -13,5 +13,5 @@
       ]
     }
   },
-  "postCreateCommand": "pip install -r requirement.txt"
+  "postCreateCommand": "pip install -e ."
 }

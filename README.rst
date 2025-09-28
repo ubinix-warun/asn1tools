@@ -343,8 +343,8 @@ Below is an example generating OER Dart source code from
 
 .. code-block:: text
 
-   > asn1tools generate_dart_source --codec oer tests/files/dart_source/dart_source.asn
-   Successfully generated oer.dart.
+   > asn1tools generate_dart_source --codec jer tests/files/dart_source/dart_source.asn
+   Successfully generated jer.dart.
 
 The same as above, but generate UPER Dart source code instead of OER.
 
