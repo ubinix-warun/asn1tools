@@ -107,6 +107,14 @@ class _Generator(Generator):
 
         return helpers + ['}']
 
+    def generate_type_declaration_process(self, type_, checker):
+        pass
+
+    def generate_definition_inner_process(self, type_, checker):
+        pass
+
+    # Generate helper functions for encoding and decoding
+    # override in subclasses to add more helpers.
     def generate_helpers(self, definitions):
         helpers = [ENCODER_AND_DECODER_STRUCTS]
         helpers += self.generate_encoder(definitions)

@@ -85,13 +85,13 @@ class Generator(object):
 
 
     def generate_type_declaration_process(self, type_, checker):
-        raise NotImplementedError('To be implemented by subclasses.')
+        raise NotImplementedError('generate_type_declaration_process: To be implemented by subclasses.')
 
     def generate_definition_inner_process(self, type_, checker):
-        raise NotImplementedError('To be implemented by subclasses.')
+        raise NotImplementedError('generate_definition_inner_process: To be implemented by subclasses.')
 
     def generate_helpers(self, definitions):
-        raise NotImplementedError('To be implemented by subclasses.')
+        raise NotImplementedError('generate_helpers: To be implemented by subclasses.')
 
     def generate_type_declaration(self, compiled_type):
         type_ = compiled_type.type
